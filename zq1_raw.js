@@ -158,7 +158,7 @@ function makeZip(files_and_names) {
         //                               10     2   // compression method
         //                               12     2   // mod time
         //                               14     2   // mod date
-        //                               16     4   // crc32 of data
+        writeLE(crc,              ehdr,  16,    4); // crc32 of data
         writeLE(filesize,         ehdr,  20,    4); // comp. size
         writeLE(filesize,         ehdr,  24,    4); // raw size
         writeLE(fname.length,     ehdr,  28,    2); // (n) name length
