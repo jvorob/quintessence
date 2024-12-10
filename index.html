@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>zq1</title>
+    <!--
+        <link rel="stylesheet" href="style.css">
+    -->
+    <style>
+body{
+    /* Improve text readability */
+    line-height:1.4;
+    font-size:16px;
+    color:#454545;
+    background-color: #fefefe;
+    margin:0;
+    box-sizing: border-box;
+
+    display:flex;
+    flex-direction:column;
+}
+
+* {
+    /* for css debugging: color in boxes around all elements */
+    /* 
+    border: 1px solid red; 
+    */
+}
+
+div.main {
+    /* set up sensible content box */
+    width:100%;
+    max-width:50em;
+    padding:2em;
+    margin:0 auto;  /* centers box in screen */
+
+
+}
+
+/* headers tighter spaced than text */
+h1,h2,h3{ line-height:1.2; }
+
+/* shrink text size and margins on smaller screens */
+@media (max-width: 500px) { body{ font-size: 14px; padding: 1em; } }
+
+a { color: #39F;} /* make links less garish */
+
+    </style>
+  </head>
+  <body>
+    <div class="main">
+        <h3> Welcome </h3>
+        <p> This is zq1 </p>
+        <div id="tgt">
+            <p>Stuff added by code should go here:<p>
+        </div>
+    </div>
+     
+  </body>
+  <script src="zq1.js"></script>
+</html>
