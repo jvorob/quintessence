@@ -72,7 +72,10 @@ const crc32 = (function() {
 // Takes an array of files and their names
 // - files are uint8Arrays
 // - filename are strings
-function makeZip(files, filenames) {
+function makeZip(files_and_names) {
+    const files     = files_and_names.map(fn => fn[0]);
+    const filenames = files_and_names.map(fn => fn[1]);
+
     assert(files.length == filenames.length, "number of files and filenames must match")
 
     // Documentation:
@@ -323,9 +326,15 @@ console.log(`Found zq match: ${found[0]}, next iteration is ${newlevel}`);
 let final_html = html_text.replaceAll(zqreg_global, newlevel)
 const htmlBytes = new TextEncoder().encode(final_html);
 
-
+let named_files = [];
+named_files.push([ imgBytes,   "img.png"]);
 const helloBytes = new TextEncoder().encode("hello");
-const testZip = makeZip([imgBytes, helloBytes, htmlBytes, quineBytes, jsBytes], ["img.png", "test.txt", "index.html", `${newlevel}.js`, "inner.js"]);
+named_files.push([ helloBytes, "hello.txt"]);
+named_files.push([ htmlBytes,  "index.html"]);
+named_files.push([ quineBytes, `${newlevel}.js`]);
+named_files.push([ jsBytes,    `inner.js`]);
+
+const testZip = makeZip(named_files);
 
 
 let zipBlob = new Blob([testZip], {type:"application/zip"}); //don't set mime type
@@ -333,7 +342,7 @@ let zipUrl= URL.createObjectURL(zipBlob); //use URL.revokeObjectURL() to free
 
 let e = document.createElement("a");
 e.setAttribute("href",zipUrl);
-e.setAttribute("download","test.zip"); // sets suggested download neme
+e.setAttribute("download",`${newlevel}.zip`); // sets suggested download neme
 e.innerText = "Download zip file"
 
 //let tgt = document.querySelector("#tgt")

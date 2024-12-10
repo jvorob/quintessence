@@ -1,6 +1,9 @@
 
 all: zq1.js zq.zip
 
+run: zq1.js
+	firefox index.html
+
 #zq1.js_esc: zq1.js
 #	@# escape \ to XXX42
 #	@# escape ` and $
