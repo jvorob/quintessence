@@ -329,10 +329,10 @@ const htmlBytes = new TextEncoder().encode(final_html);
 let named_files = [];
 named_files.push([ imgBytes,   "img.png"]);
 const helloBytes = new TextEncoder().encode("hello");
-named_files.push([ helloBytes, "hello.txt"]);
+//named_files.push([ helloBytes, "hello.txt"]);
 named_files.push([ htmlBytes,  "index.html"]);
 named_files.push([ quineBytes, `${newlevel}.js`]);
-named_files.push([ jsBytes,    `inner.js`]);
+//named_files.push([ jsBytes,    `inner.js`]);
 
 const testZip = makeZip(named_files);
 
